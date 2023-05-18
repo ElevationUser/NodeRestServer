@@ -36,7 +36,8 @@ const UsuarioSchema =Schema({
 
 UsuarioSchema.methods.toJSON = function(){
     //Se remueven los campos que no quiero mostrar en el resultado del insert del usuario
-    const {__v ,password , ...usuario} = this.toObject();
+    const {__v ,password , _id,...usuario} = this.toObject();
+    usuario.uid=_id;
     return usuario;
 }
 

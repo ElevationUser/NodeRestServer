@@ -70,14 +70,13 @@ const usuariosPatch =  (req, res = response) => {
 }
 
 const usuariosDelete =  async (req, res = response) => {
-    const {id}= req.params;
-
+    const {id}= req.params; //Us al que hay que borrar
+    const uid = req.uid; //Us que estoy usando para interactuar (Autenticado)
     const usuario = await Usuario.findByIdAndUpdate(id,{estado:false});
 
     res.status(200).json({
-        msg:'El usuario ha sido eliminado',
-        usuario
-    });
+        msg:'El usuario ha sido eliminado',usuario
+        });
 }
 
 module.exports={
